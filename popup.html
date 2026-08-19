@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zero Literacy Chatbot</title>
+  <link rel="stylesheet" href="popup.css" />
+  <style>
+    /* Quick styling for beginner-friendly popup */
+    #app { font-family: Arial, sans-serif; padding: 10px; width: 300px; }
+    header { text-align: center; margin-bottom: 10px; }
+    #chat { border: 1px solid #ccc; height: 150px; padding: 5px; overflow-y: auto; margin-bottom: 10px; }
+    #controls button { margin-right: 5px; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h3>🎙️ Welfare Scheme Assistant</h3>
+    </header>
+
+    <!-- Chat messages / recognized speech -->
+    <div id="chat" aria-live="polite">உங்கள் குரல் இங்கு காட்சியாகும்...</div>
+
+    <!-- Control buttons -->
+    <div id="controls">
+      <button id="micBtn">🎤 பேசவும்</button>
+      <button id="stopBtn">⏹️ நிறுத்து</button>
+      <button id="closeBtn">✕ மூடு</button>
+    </div>
+  </div>
+<hr>
+
+
+
+<div style="padding:8px 10px 12px">
+
+  <p style="font-size:12px;font-weight:700;color:#555;
+     text-transform:uppercase;letter-spacing:0.5px;margin:0 0 10px">
+    படத்திலிருந்து தகவல் பிரித்தெடுத்தல்
+  </p>
+
+  <label for="imageInput" id="uploadLabel" style="
+    display:block;border:2px dashed #ccc;border-radius:8px;
+    padding:14px;text-align:center;cursor:pointer;
+    color:#555;font-size:13px;margin-bottom:10px;">
+    📎 படத்தை தேர்வு செய்யவும்
+  </label>
+  <input type="file" id="imageInput" accept="image/*"
+  onchange="
+    const name = this.files[0]?.name || '';
+    document.getElementById('uploadLabel').textContent = name ? '✅ ' + name : '📎 படத்தை தேர்வு செய்யவும்';
+  ">
+
+  <button id="extractText" style="
+    width:100%;padding:9px;background:#4f46e5;color:white;
+    border:none;border-radius:8px;font-size:14px;
+    font-weight:600;cursor:pointer;margin-bottom:12px;">
+    🔍 தகவல்களைப் பிரித்தெடுத்தல்
+  </button>
+
+  <div id="ocrResult" style="font-size:13px;color:#333;min-height:20px;"></div>
+
+</div>
+
+<script src="popup.js"></script>
+
+  
+ 
+</body>
+</html>
+  
